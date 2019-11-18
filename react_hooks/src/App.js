@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const useInput = (initialValue, validator) => {
   const [value, setValue] = useState(initialValue);
@@ -39,7 +39,19 @@ const useTabs = (initialTab, allTabs) => {
   };
 };
 
+const useTitle = initialTitle => {
+  const [title, setTitle] = useState(initialTitle);
+  const updateTitle = () => {
+    const htmlTitle = document.querySelector("Title");
+    htmlTitle.innerText = title;
+  };
+  useEffect(updateTitle, [title]);
+  return setTitle;
+};
+
 const App = () => {
+  const titleUpdater = useTitle("Loading");
+
   const [item, setItem] = useState(0);
   const reset = () => setItem(0);
   const incrementItem = () => setItem(item + 1);
