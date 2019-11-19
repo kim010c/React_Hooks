@@ -3,6 +3,8 @@ import useInput from "./UseInput";
 import useTabs from "./UseTabs";
 import useTitle from "./UseTitle";
 import useClick from "./UseClick";
+import useConfirm from "./UseConfirm";
+import usePreventLeave from "./UsePreventLeave";
 
 const content = [
   {
@@ -18,6 +20,12 @@ const content = [
 ];
 
 const App = () => {
+  const { enablePrevent, disablePrevent } = usePreventLeave();
+
+  const check = () => console.log("confirm 확인");
+  const cancel = () => console.log("confirm 취소");
+  const confirmcheck = useConfirm("확인", check, cancel);
+
   const titleUpdater = useTitle("Loading");
   setTimeout(() => titleUpdater("Home"), 5000);
 
@@ -51,6 +59,11 @@ const App = () => {
         <div>
           <h1 ref={title}>Hi</h1>
         </div>
+        <button onClick={confirmcheck}>confirm</button>
+      </div>
+      <div>
+        <button onClick={enablePrevent}>Protect</button>
+        <button onClick={disablePrevent}>UnProtect</button>
       </div>
     </div>
   );
