@@ -10,6 +10,7 @@ import useFadeIn from "./UseFadeIn";
 import useNetwork from "./UseNetWork";
 import useScroll from "./UseScroll";
 import useFullscreen from "./UseFullscreen";
+import useNotification from "./UseNotification";
 
 const content = [
   {
@@ -25,6 +26,9 @@ const content = [
 ];
 
 const App = () => {
+  const triggerNotif = useNotification("알림알림", {
+    body: "알림의 내용입니다."
+  });
   const onFull = isFull => {
     console.log(isFull ? "풀스크린" : "작은스크린");
   };
@@ -83,6 +87,7 @@ const App = () => {
         <div>
           <h1 ref={title}>Hi</h1>
         </div>
+        <button onClick={triggerNotif}>알림</button>
         <button onClick={confirmcheck}>confirm</button>
       </div>
       <div>
