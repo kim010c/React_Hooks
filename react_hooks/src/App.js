@@ -11,6 +11,7 @@ import useNetwork from "./UseNetWork";
 import useScroll from "./UseScroll";
 import useFullscreen from "./UseFullscreen";
 import useNotification from "./UseNotification";
+import useAxios from "./UseAxios";
 
 const content = [
   {
@@ -26,6 +27,10 @@ const content = [
 ];
 
 const App = () => {
+  const { loading, error, data } = useAxios({
+    url: "https://yts.am/api/v2/list_movies.json"
+  });
+  console.log(`loading: ${loading}\n error:${error}\ndata:${data}`);
   const triggerNotif = useNotification("알림알림", {
     body: "알림의 내용입니다."
   });
