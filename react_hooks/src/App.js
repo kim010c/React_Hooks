@@ -5,6 +5,11 @@ import useTitle from "./UseTitle";
 import useClick from "./UseClick";
 import useConfirm from "./UseConfirm";
 import usePreventLeave from "./UsePreventLeave";
+import useBeforeLeave from "./UseBeforeLeave";
+import useFadeIn from "./UseFadeIn";
+import useNetwork from "./UseNetWork";
+import useScroll from "./UseScroll";
+import useFullscreen from "./UseFullscreen";
 
 const content = [
   {
@@ -20,6 +25,22 @@ const content = [
 ];
 
 const App = () => {
+  const onFull = isFull => {
+    console.log(isFull ? "풀스크린" : "작은스크린");
+  };
+  const { element, triggerFull, exitFull } = useFullscreen(onFull);
+
+  const { y } = useScroll();
+  const handleNetworkChange = () => {
+    console.log("online ? 온라인이다 : 오프라인이다");
+  };
+  const onLine = useNetwork(handleNetworkChange);
+
+  const fadeInH1 = useFadeIn(1, 1);
+  const fadeInp = useFadeIn(5, 10);
+  const begForLife = () => console.log("leave");
+  useBeforeLeave(begForLife);
+
   const { enablePrevent, disablePrevent } = usePreventLeave();
 
   const check = () => console.log("confirm 확인");
@@ -42,12 +63,15 @@ const App = () => {
   const sayHello = () => console.log("say hello");
   const title = useClick(sayHello);
   return (
-    <div>
-      <h1>useState 사용 : {item}</h1>
+    <div style={{ height: "1000vh" }}>
+      <h1 style={{ position: "fixed", color: y > 100 ? "red" : "blue" }}>
+        useState 사용 : {item} {onLine ? "onLine" : "offLine"}
+      </h1>
       <button onClick={reset}>Reset</button>
       <button onClick={incrementItem}>+</button>
       <button onClick={decrementItem}>-</button>
-      <h1>Hello</h1>
+      <h1 {...fadeInH1}>Hello</h1>
+      <p {...fadeInp}>FadeIn Test</p>
       <input placeholder="Name" {...name} />
       <div>
         {content.map((section, index) => (
@@ -65,6 +89,14 @@ const App = () => {
         <button onClick={enablePrevent}>Protect</button>
         <button onClick={disablePrevent}>UnProtect</button>
       </div>
+      <div ref={element}>
+        <img
+          alt="키아누리브스"
+          onClick={exitFull}
+          src="http://www.topstarnews.net/news/photo/201901/570538_244744_1049.jpg"
+        ></img>
+      </div>
+      <button onClick={triggerFull}>꽉채우기</button>
     </div>
   );
 };
