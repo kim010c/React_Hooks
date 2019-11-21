@@ -27,10 +27,12 @@ const content = [
 ];
 
 const App = () => {
-  const { loading, error, data } = useAxios({
+  const { loading, error, data, refetch } = useAxios({
     url: "https://yts.am/api/v2/list_movies.json"
   });
-  console.log(`loading: ${loading}\n error:${error}\ndata:${data}`);
+  console.log(
+    `loading: ${loading}\n error:${error}\ndata:${JSON.stringify(data)}`
+  );
   const triggerNotif = useNotification("알림알림", {
     body: "알림의 내용입니다."
   });
@@ -98,6 +100,11 @@ const App = () => {
       <div>
         <button onClick={enablePrevent}>Protect</button>
         <button onClick={disablePrevent}>UnProtect</button>
+        <div>
+          <h1>{data && data.status}</h1>
+          <h2>{loading && "Loading"} </h2>
+          <button onClick={refetch}>Refetch</button>
+        </div>
       </div>
       <div ref={element}>
         <img
