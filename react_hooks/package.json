@@ -1,8 +1,7 @@
 {
-  "name": "react_hooks",
+  "name": "bellpumpkin-react-hook",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "peerDependencies": {
     "axios": "^0.19.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -28,5 +27,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "React Hook to update your Document",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kim010c/React_Hooks.git"
+  },
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "author": "Bellpumpkin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kim010c/React_Hooks/issues"
+  },
+  "homepage": "https://github.com/kim010c/React_Hooks#readme"
 }

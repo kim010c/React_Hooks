@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import useInput from "./UseInput";
-import useTabs from "./UseTabs";
-import useTitle from "./UseTitle";
-import useClick from "./UseClick";
-import useConfirm from "./UseConfirm";
-import usePreventLeave from "./UsePreventLeave";
-import useBeforeLeave from "./UseBeforeLeave";
-import useFadeIn from "./UseFadeIn";
-import useNetwork from "./UseNetWork";
-import useScroll from "./UseScroll";
-import useFullscreen from "./UseFullscreen";
-import useNotification from "./UseNotification";
-import useAxios from "./UseAxios";
+import useInput from "./useInput/useInput";
+import useTabs from "./useTabs/useTabs";
+import useTitle from "./useTitle/useTitle";
+import useClick from "./useClick/useClick";
+import useConfirm from "./useConfirm/useConfirm";
+import usePreventLeave from "./usePreventLeave/usePreventLeave";
+import useBeforeLeave from "./useBeforeLeave/useBeforeLeave";
+import useFadeIn from "./useFadeIn/useFadeIn";
+import useNetwork from "./useNetWork/useNetWork";
+import useScroll from "./useScroll/useScroll";
+import useFullscreen from "./useFullscreen/useFullscreen";
+import useNotification from "./useNotification/useNotification";
+import useAxios from "./useAxios/useAxios";
 
 const content = [
   {
